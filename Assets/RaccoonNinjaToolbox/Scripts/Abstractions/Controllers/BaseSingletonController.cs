@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RaccoonNinjaToolbox.Scripts.Abstractions
+namespace RaccoonNinjaToolbox.Scripts.Abstractions.Controllers
 {
     public abstract class BaseSingletonController<T> : MonoBehaviour where T: BaseSingletonController<T>
     {

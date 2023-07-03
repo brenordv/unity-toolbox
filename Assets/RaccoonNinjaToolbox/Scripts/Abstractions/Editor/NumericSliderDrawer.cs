@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using RaccoonNinjaToolbox.Scripts.Abstractions.DataTypes;
+using RaccoonNinjaToolbox.Scripts.Interfaces;
 using UnityEditor;
 using UnityEngine;
 
-namespace RaccoonNinjaToolbox.Scripts.Editor
+namespace RaccoonNinjaToolbox.Scripts.Abstractions.Editor
 {
     // Custom Property Drawer that enables us to create a user interface slider with min and max values.
     public abstract class NumericSliderDrawer<TControllerAttribute, TEntity> : PropertyDrawer
         where TEntity : struct
-        where TControllerAttribute : Attribute
+        where TControllerAttribute : Attribute, IMinMaxRangeAttribute<TEntity>
     {
         // A constant field width for the input fields that handle the minimum and maximum range values.
         private const float RangeBoundsFieldWidth = 60f;
@@ -27,8 +27,6 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
                 // Draw a label in front of the property.
                 position = EditorGUI.PrefixLabel(position, label);
 
-
-
                 // Find and get the MinValue and MaxValue properties relative to the SerializedProperty.
                 var minProp = property.FindPropertyRelative("MinValue");
                 var maxProp = property.FindPropertyRelative("MaxValue");
@@ -44,8 +42,8 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
                 var rangeMax = GetDefaultRangeMax(maxValue);
 
                 // Get the MinMaxFloatRangeAttribute from the field, if any.
-                var ranges =
-                    (TControllerAttribute[])fieldInfo.GetCustomAttributes(typeof(TControllerAttribute), true);
+                // Note: In case you're wondering, referencing the common interface here does not work.
+                var ranges = (TControllerAttribute[])fieldInfo.GetCustomAttributes(typeof(TControllerAttribute), true);
 
                 // If there are any MinMaxFloatRangeAttributes, use their min and max values.
                 if (ranges.Length > 0)
@@ -121,11 +119,11 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
             }
             catch (FormatException fe)
             {
-                Debug.LogWarning($"{property.name} - {fe.Message}");
+                Debug.LogWarning($"{property?.name} - {fe.Message}");
             }
             catch (ArgumentNullException ane)
             {
-                Debug.LogWarning($"{property.name} - {ane.Message}");
+                Debug.LogWarning($"{property?.name} - {ane.Message}");
             }
             catch (Exception e)
             {
@@ -167,7 +165,7 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
         }
 
 
-        private static float GetValueFromControllerAttribute(TControllerAttribute attr, string propName)
+        private float GetValueFromControllerAttribute(TControllerAttribute attr, string propName)
         {
             // Get the type of the instance
             var type = attr.GetType();
@@ -182,9 +180,10 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
             // Use the PropertyInfo to get the value of the Min property
             var value = prop.GetValue(attr);
 
-            return value is int intValue ? Convert.ToSingle(intValue) : default;
+            return ObjectToFloat(value);
         }
-        
+
+        protected abstract float ObjectToFloat(object value);
         protected abstract float GetDefaultRangeMin(TEntity value);
         protected abstract float GetDefaultRangeMax(TEntity value);
         protected abstract float GetEntityValueAsFloat(TEntity value);

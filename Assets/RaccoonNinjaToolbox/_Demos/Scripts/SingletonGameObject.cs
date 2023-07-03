@@ -1,4 +1,4 @@
-﻿using RaccoonNinjaToolbox.Scripts.Abstractions;
+﻿using RaccoonNinjaToolbox.Scripts.Abstractions.Controllers;
 using UnityEngine;
 
 namespace RaccoonNinjaToolbox._Demo.Scripts

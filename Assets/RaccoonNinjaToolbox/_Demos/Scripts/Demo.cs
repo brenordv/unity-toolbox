@@ -28,7 +28,7 @@ namespace RaccoonNinjaToolbox._Demo.Scripts
         [SerializeField, InspectorReadOnly] private int timesUpdated;
         [SerializeField, InspectorReadOnly] private int currentFramesPerSecond;
 
-        [Header("Demo")] public int Foo;
+        [Header("Demo")]
         [SerializeField] private RangedInt rangedIntWithDefaultValues;
         [SerializeField, MinMaxIntRange(max: 10)] private RangedInt rangedIntWithDefaultMinMax10;
         [SerializeField, MinMaxIntRange(5, 15)] private RangedInt rangedIntWithMin5Max15;

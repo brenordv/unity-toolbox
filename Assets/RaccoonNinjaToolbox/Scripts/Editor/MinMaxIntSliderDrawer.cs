@@ -1,4 +1,6 @@
-﻿using RaccoonNinjaToolbox.Scripts.Attributes;
+﻿using System;
+using RaccoonNinjaToolbox.Scripts.Abstractions.Editor;
+using RaccoonNinjaToolbox.Scripts.Attributes;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +10,11 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
     [CustomPropertyDrawer(typeof(RangedInt), true)]
     public class MinMaxIntSliderDrawer: NumericSliderDrawer<MinMaxIntRangeAttribute, int>
     {
+        protected override float ObjectToFloat(object value)
+        {
+            return value is int intValue ? Convert.ToSingle(intValue) : default;
+        }
+
         protected override float GetDefaultRangeMin(int value)
         {
             return value;

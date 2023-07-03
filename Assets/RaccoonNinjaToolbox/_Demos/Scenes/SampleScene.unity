@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -32,7 +32,7 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
@@ -695,7 +695,7 @@ MonoBehaviour:
     m_Top: 8
     m_Bottom: 8
   m_ChildAlignment: 0
-  m_Spacing: 4
+  m_Spacing: 12
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -1050,7 +1050,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1520,7 +1520,7 @@ MonoBehaviour:
   - GameController
   delayBetweenPrints:
     MinValue: 1
-    MaxValue: 4.31
+    MaxValue: 3
   singleTagText: {fileID: 23555167}
   multipleTagsArrayText: {fileID: 1670316702}
   multipleTagsListText: {fileID: 404555028}
@@ -1531,16 +1531,15 @@ MonoBehaviour:
   currentDelay: 0
   timesUpdated: 0
   currentFramesPerSecond: 0
-  Foo: 0
   rangedIntWithDefaultValues:
     MinValue: 0
     MaxValue: 1
   rangedIntWithDefaultMinMax10:
-    MinValue: 7
-    MaxValue: 10
-  rangedIntWithMin5Max15:
     MinValue: 5
     MaxValue: 9
+  rangedIntWithMin5Max15:
+    MinValue: 6
+    MaxValue: 8
 --- !u!4 &2027559980
 Transform:
   m_ObjectHideFlags: 0
