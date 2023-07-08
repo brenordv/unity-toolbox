@@ -2,7 +2,12 @@
 Every time I started a project, I re-implemented the same helpers. So I decided to create this package to same me some
 time, make it easy to update it and last but not least, to share it with the community and maybe help someone else.
 
-It's all free under GNU General Public License (GPL).
+It's all free under MIT License.
+
+
+# Requirements
+The Demos requires `Text Mesh Pro`, but the actual package doesn't have any requirements.
+
 
 # Features
 ## Singleton
@@ -69,7 +74,102 @@ There you go. All ready. Fair warning: This might be slightly annoying to make.
 
 > You can use `MinMaxFloatSliderDrawer` and `MinMaxIntSliderDrawer` as examples. 
 
-## 
+## Typed audio clip
+This is a ScriptableObject where you can select a range for volume and pitch to be randomized. If the main camera has an
+audio source, you can also play the audio clip on it using the inspector button to get a feel of how your audio clip
+is going to sound like.
+
+When using the Play method of this scriptable object, you can pass a callback that will be called after the audio 
+is done. This is optional, but if you need it, you also must add an instance of the CallbackRunner component. There is 
+a prefab for it. (More info about it below.)
+
+> In the `_Demos/ScriptableObjectAsserts` folder there's a clip example.
+
+The audio file was downloaded from [freesound.org](https://freesound.org/people/Alivvie/sounds/323437/).
+
+## Callback runner
+This is a singleton that manages and helps you run coroutines. 
+You place it in your scene and you'll be able to:
+1. Start a coroutine from any class (even if it's not a MonoBehaviour);
+2. Add a delay to the coroutine;
+3. Use a normal function as a Coroutine;
+4. Stop a coroutine;
+5. Using UnityEvents you also can:
+    - Know when a Coroutine started;
+    - Know when a Coroutine finished;
+    - Know when a Coroutine was stopped by the code/user;
+
+With this, all coroutines are identified by an ID (Guid), so you can keep track of it, if you need to.
+
+> In the `_Demos/Scripts` folder there's an example in the file `CallbackRunnerDemo.cs`
 
 
-https://freesound.org/people/Alivvie/sounds/323437/
+# Warranties and Support
+None and almost none. This package a collection of tools I've been using and is provided AS-IS. In case of bugs or feature 
+requests, feel free to open an issue or a pull request. I'll try to help as much as I can, but I can't guarantee anything.
+
+If you like this and made some features better, I encourage you to open a pull request. I'll be happy to review it and
+merge into this package. (This will probably never happen, but if does, I'll create a contributors section here, add 
+you and create a link to your project.)
+
+
+# TODO
+Add proper tests instead of relying on demos.
+
+
+# License
+The MIT License is a permissive free software license that originates from the Massachusetts Institute of Technology. 
+It's a simple and flexible license that's widely used in many open source projects.
+
+## Key Features of the MIT License:
+
+1. **Simplicity**: The MIT License is quite straightforward and easy to understand. This is one of the reasons why it's
+one of the most popular software licenses.
+
+2. **Permission for Broad Use**: The license allows users to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the software.
+
+3. **Use in Proprietary Software**: The MIT license allows you to use, modify, and distribute the software in your 
+proprietary software. This means that you can include MIT-licensed software in your own software, and you can 
+distribute that software under any license you want, including a proprietary license.
+
+4. **Requirement for Attribution**: If you use MIT-licensed software, you must include the original copyright notice 
+and the text of the MIT license.
+
+Here is the full text of the MIT License for reference:
+
+```
+MIT License
+
+Copyright (c) [year] [fullname]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## Disclaimer
+
+The license does not provide a warranty or take on liability. The software is provided "as is", and the user assumes 
+responsibility for any issues that may arise from using the software.
+
+## Conclusion
+
+The MIT License is a very flexible license that provides a lot of freedom to users while maintaining a minimal 
+requirement for attribution. This makes it a popular choice for many open source projects. However, like all licenses, 
+it's important to read and understand the terms of the MIT License before using MIT-licensed software in your projects.
+Always consult with a legal expert if you have questions or doubts.
