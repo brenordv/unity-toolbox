@@ -103,6 +103,15 @@ With this, all coroutines are identified by an ID (Guid), so you can keep track 
 
 > In the `_Demos/Scripts` folder there's an example in the file `CallbackRunnerDemo.cs`
 
+## Readonly inspector field
+This is a custom attribute that you can use to make a field in the inspector read-only. This is useful when you want to
+show a value, but don't want to allow the user to change it.
+
+It's not perfect, if you use it on a list, the list items will be readonly, but you'll still be able to add or remove 
+items from it. I haven't found a way to make the list controls read-only.
+
+> In the `_Demos/Scripts` folder there's a bunch of examples in the file `Demo.cs`
+
 
 # Warranties and Support
 None and almost none. This package a collection of tools I've been using and is provided AS-IS. In case of bugs or feature 
