@@ -123,8 +123,16 @@ namespace RaccoonNinjaToolbox.Scripts.GlobalControllers
             if (delay.HasValue)
             {
                 Log($"Delaying routine start by {delay.Value} seconds");
-                yield return new WaitForSeconds(delay.Value);
+
+                var delayCoroutine = StartCoroutine(WaitForDelay(delay.Value));
+
+                RegisterNewCoroutine(coroutineKey, delayCoroutine);
+
+                yield return delayCoroutine;
+
+                if (IsCoroutineCancelled(coroutineKey)) yield break;
             }
+
             Log($"Coroutine '{coroutineKey}' started");
             
             onCoroutineStarted.Invoke(coroutineKey);
@@ -155,9 +163,16 @@ namespace RaccoonNinjaToolbox.Scripts.GlobalControllers
             if (!enableRoutineKeyRuntimeInfo) return;
             runningCoroutineKeys.Remove(coroutineKey.ToString());
         }
+
+        private bool IsCoroutineCancelled(Guid key) => !_routines.ContainsKey(key);
         
         private static Guid GetCoroutineKey() => Guid.NewGuid();
 
+        private IEnumerator WaitForDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+        }
+        
         private static Func<IEnumerator> WrapActionInEnumerator(Action action)
         {
             IEnumerator Wrapper()
