@@ -14,14 +14,14 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
             return value is float floatValue ? floatValue : default;
         }
 
-        protected override float GetDefaultRangeMin(float value)
+        protected override float GetDefaultRangeMin()
         {
-            return value;
+            return 0;
         }
 
-        protected override float GetDefaultRangeMax(float value)
+        protected override float GetDefaultRangeMax()
         {
-            return Mathf.Max(value, 1);
+            return 1;
         }
 
         protected override float GetEntityValueAsFloat(float value)

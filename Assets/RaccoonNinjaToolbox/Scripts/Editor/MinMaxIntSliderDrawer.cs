@@ -15,14 +15,14 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
             return value is int intValue ? Convert.ToSingle(intValue) : default;
         }
 
-        protected override float GetDefaultRangeMin(int value)
+        protected override float GetDefaultRangeMin()
         {
-            return value;
+            return 0;
         }
 
-        protected override float GetDefaultRangeMax(int value)
+        protected override float GetDefaultRangeMax()
         {
-            return Mathf.Max(value, 1);
+            return 1;
         }
 
         protected override float GetEntityValueAsFloat(int value)

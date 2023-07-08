@@ -31,13 +31,9 @@ namespace RaccoonNinjaToolbox.Scripts.Abstractions.Editor
 
             if (minProp == null || maxProp == null) return;
 
-            // Get the current minimum and maximum values.
-            var minValue = GetValueFromProperty(minProp);
-            var maxValue = GetValueFromProperty(maxProp);
-
             // Set a default minimum and maximum allowed values for the slider.
-            var rangeMin = GetDefaultRangeMin(minValue);
-            var rangeMax = GetDefaultRangeMax(maxValue);
+            var rangeMin = GetDefaultRangeMin();
+            var rangeMax = GetDefaultRangeMax();
 
             // Get the MinMaxFloatRangeAttribute from the field, if any.
             // Note: In case you're wondering, referencing the common interface here does not work.
@@ -60,7 +56,7 @@ namespace RaccoonNinjaToolbox.Scripts.Abstractions.Editor
             if (!result.success)
                 return;
 
-            minValue = result.value;
+            var minValue = result.value;
 
             // Shift the position to the right by the width of the min field.
             position.xMin += RangeBoundsFieldWidth;
@@ -76,7 +72,7 @@ namespace RaccoonNinjaToolbox.Scripts.Abstractions.Editor
             if (!result.success)
                 return;
 
-            maxValue = result.value;
+            var maxValue = result.value;
 
             // Make sure max value is not less than min value.
             if (GetEntityValueAsFloat(maxValue) < GetEntityValueAsFloat(minValue))
@@ -167,8 +163,8 @@ namespace RaccoonNinjaToolbox.Scripts.Abstractions.Editor
         }
 
         protected abstract float ObjectToFloat(object value);
-        protected abstract float GetDefaultRangeMin(TEntity value);
-        protected abstract float GetDefaultRangeMax(TEntity value);
+        protected abstract float GetDefaultRangeMin();
+        protected abstract float GetDefaultRangeMax();
         protected abstract float GetEntityValueAsFloat(TEntity value);
         protected abstract TEntity GetValueFromProperty(SerializedProperty property);
         protected abstract void SetValueToProperty(SerializedProperty property, float value);

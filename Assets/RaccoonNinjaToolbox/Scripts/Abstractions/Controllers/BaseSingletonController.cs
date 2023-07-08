@@ -2,6 +2,7 @@
 
 namespace RaccoonNinjaToolbox.Scripts.Abstractions.Controllers
 {
+    
     public abstract class BaseSingletonController<T> : MonoBehaviour where T: BaseSingletonController<T>
     {
         private static T _instance;
