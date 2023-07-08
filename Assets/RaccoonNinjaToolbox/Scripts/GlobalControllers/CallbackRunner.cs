@@ -168,7 +168,7 @@ namespace RaccoonNinjaToolbox.Scripts.GlobalControllers
         
         private static Guid GetCoroutineKey() => Guid.NewGuid();
 
-        private IEnumerator WaitForDelay(float delay)
+        private static IEnumerator WaitForDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
         }
