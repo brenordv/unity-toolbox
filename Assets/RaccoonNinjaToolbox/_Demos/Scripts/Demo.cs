@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using RaccoonNinjaToolbox.Scripts.Attributes;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
+using RaccoonNinjaToolbox.Scripts.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
@@ -32,6 +34,7 @@ namespace RaccoonNinjaToolbox._Demo.Scripts
         [SerializeField] private RangedInt rangedIntWithDefaultValues;
         [SerializeField, MinMaxIntRange(max: 10)] private RangedInt rangedIntWithDefaultMinMax10;
         [SerializeField, MinMaxIntRange(5, 15)] private RangedInt rangedIntWithMin5Max15;
+        [SerializeField, Tooltip("Configurable audio clip that you can play in the inspector")] private TypedAudioClip audioClip;
         
         private void Start()
         {

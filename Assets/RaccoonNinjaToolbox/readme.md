@@ -6,7 +6,7 @@ It's all free under MIT License.
 
 
 # Requirements
-The Demos requires `Text Mesh Pro`, but the actual package doesn't have any requirements.
+Unity 6 (6000.0) or later. The package has no additional dependencies.
 
 
 # Features

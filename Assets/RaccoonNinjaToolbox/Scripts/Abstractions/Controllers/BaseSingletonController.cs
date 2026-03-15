@@ -8,7 +8,7 @@ namespace RaccoonNinjaToolbox.Scripts.Abstractions.Controllers
         private static T _instance;
 
         public static T Instance => _instance;
-        
+
         protected virtual void Awake()
         {
             if (_instance != null && _instance != this)
@@ -19,7 +19,13 @@ namespace RaccoonNinjaToolbox.Scripts.Abstractions.Controllers
             _instance = (T)this;
             PostAwake();
         }
-        
+
+        protected virtual void OnDestroy()
+        {
+            if (_instance == this)
+                _instance = null;
+        }
+
         protected virtual void PostAwake() {}
     }
 }
