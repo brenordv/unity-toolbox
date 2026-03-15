@@ -1,9 +1,18 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [3.0.0] - 2026-03-15
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### Added
+- CancellationToken support in TypedAudioClip.Play for caller-controlled cancellation.
+- TypedAudioClipDemo script showcasing play counter and completion callback.
+
+### Changed
+- **Breaking:** TypedAudioClip no longer depends on CallbackRunner for completion callbacks. Uses Unity 6's Awaitable for fire-and-forget async delays instead.
+- **Breaking:** TypedAudioClip no longer modifies volume/pitch when randomization is disabled. The AudioSource retains its existing values.
+- TypedAudioClip.Play method signature now includes an optional CancellationToken parameter.
+
+### Fixed
+- Floating-point precision in RangedFloat tests (added tolerance for min-equals-max edge case).
 
 ## [2.0.0] - 2026-03-15
 

@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Threading;
 using RaccoonNinjaToolbox.Scripts.Attributes;
 using RaccoonNinjaToolbox.Scripts.Constants;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
-using RaccoonNinjaToolbox.Scripts.GlobalControllers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,47 +26,71 @@ namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
         [SerializeField, MinMaxFloatRange(-3f, 3f)]
         private RangedFloat pitch;
 
-        [SerializeField] private bool randomizePitch = true;
-        [SerializeField] private bool randomizeVolume = true;
+        [SerializeField, Tooltip("If set, will randomize the pitch of the audio clip according to the range defined. " +
+                                 "If false, will use whatever is defined in the audio source.")] 
+        private bool randomizePitch = true;
 
-        public void Play(AudioSource audioSource, Action onFinishCallback = null)
+        [SerializeField, Tooltip("If set, will randomize the volume of the audio clip according to the range defined. " +
+                                 "If false, will use whatever is defined in the audio source.")]
+        private bool randomizeVolume = true;
+
+        public void Play(AudioSource audioSource, Action onFinishCallback = null, CancellationToken ct = default)
+        {
+            if (!CanPlayClip(audioSource)) return;
+
+            ProcessPracticalDuration();
+
+            ProcessClipConfigRandomization(audioSource);
+
+            audioSource.PlayOneShot(audioClip);
+
+            if (onFinishCallback == null) return;
+
+            _ = FireAndForgetCallbackAsync(onFinishCallback, ct);
+        }
+
+        private bool CanPlayClip(AudioSource audioSource)
         {
             if (!audioSource)
             {
                 Debug.LogError($"{name} requires an AudioSource, but none was provided.");
-                return;
+                return false;
             }
 
             if (!audioClip)
             {
                 Debug.LogError($"{name} requires an AudioClip, but none was found.");
-                return;
+                return false;
             }
 
-            if (PracticalDuration <= 0f)
-                PracticalDuration = audioClip.length;
-
-            audioSource.volume = randomizeVolume ? volume.Random() : volume.MinValue;
-            audioSource.pitch = randomizePitch ? pitch.Random() : pitch.MinValue;
-
-            if (CanExecuteCallback(onFinishCallback))
-                CallbackRunner.Instance.StartCoroutineAfterDelay(PracticalDuration, onFinishCallback);
-
-            audioSource.PlayOneShot(audioClip);
+            return true;
         }
 
-        private static bool CanExecuteCallback(Action onFinishCallback)
+        private void ProcessPracticalDuration()
         {
-            if (onFinishCallback == null)
-                return false;
-            
-            // Checking if CallbackRunner exists.
-            if (CallbackRunner.Instance) return true;
+            if (PracticalDuration > 0f) return;
 
-            Debug.LogError(
-                $"{nameof(CallbackRunner)} is null. Did you forget to add the {nameof(CallbackRunner)} singleton/prefab to the scene?");
+            PracticalDuration = audioClip.length;
+        }
 
-            return false;
+        private void ProcessClipConfigRandomization(AudioSource audioSource)
+        {
+            if (randomizeVolume) audioSource.volume = volume.Random();
+            if (randomizePitch) audioSource.pitch = pitch.Random();
+        }
+
+        private async Awaitable FireAndForgetCallbackAsync(Action onFinishCallback, CancellationToken ct)
+        {
+            try
+            {
+                await Awaitable.WaitForSecondsAsync(PracticalDuration, ct);
+                ct.ThrowIfCancellationRequested();
+                onFinishCallback();
+            }
+            catch (OperationCanceledException)
+            {
+                // In this specific case, no need to do anything here, the operation was canceled. So we just move on.
+            }
         }
     }
 }

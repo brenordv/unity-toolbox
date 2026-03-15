@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using NUnit.Framework;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
@@ -59,7 +58,7 @@ namespace RaccoonNinjaToolbox.Tests.EditMode
         }
 
         [Test]
-        public void Play_SetsVolumeToMinValue_WhenNotRandomized()
+        public void Play_DoesNotModifyVolume_WhenNotRandomized()
         {
             var audioClip = AudioClip.Create("TestClip", 44100, 1, 44100, false);
             SetPrivateField(_clip, "audioClip", audioClip);
@@ -68,16 +67,17 @@ namespace RaccoonNinjaToolbox.Tests.EditMode
             SetPrivateField(_clip, "volume", new RangedFloat { MinValue = 0.42f, MaxValue = 0.9f });
             SetPrivateField(_clip, "pitch", new RangedFloat { MinValue = 1f, MaxValue = 1f });
 
+            _audioSource.volume = 0.65f;
             _clip.Play(_audioSource);
 
-            Assert.That(_audioSource.volume, Is.EqualTo(0.42f).Within(0.001f),
-                "Volume should be set to MinValue when randomization is disabled");
+            Assert.That(_audioSource.volume, Is.EqualTo(0.65f).Within(0.001f),
+                "Volume should remain unchanged when randomization is disabled");
 
             AudioClip.DestroyImmediate(audioClip);
         }
 
         [Test]
-        public void Play_SetsPitchToMinValue_WhenNotRandomized()
+        public void Play_DoesNotModifyPitch_WhenNotRandomized()
         {
             var audioClip = AudioClip.Create("TestClip", 44100, 1, 44100, false);
             SetPrivateField(_clip, "audioClip", audioClip);
@@ -86,10 +86,11 @@ namespace RaccoonNinjaToolbox.Tests.EditMode
             SetPrivateField(_clip, "volume", new RangedFloat { MinValue = 1f, MaxValue = 1f });
             SetPrivateField(_clip, "pitch", new RangedFloat { MinValue = 0.75f, MaxValue = 1.5f });
 
+            _audioSource.pitch = 1.2f;
             _clip.Play(_audioSource);
 
-            Assert.That(_audioSource.pitch, Is.EqualTo(0.75f).Within(0.001f),
-                "Pitch should be set to MinValue when randomization is disabled");
+            Assert.That(_audioSource.pitch, Is.EqualTo(1.2f).Within(0.001f),
+                "Pitch should remain unchanged when randomization is disabled");
 
             AudioClip.DestroyImmediate(audioClip);
         }
@@ -108,23 +109,6 @@ namespace RaccoonNinjaToolbox.Tests.EditMode
 
             Assert.That(_audioSource.volume,
                 Is.GreaterThanOrEqualTo(0.3f).And.LessThanOrEqualTo(0.7f));
-
-            AudioClip.DestroyImmediate(audioClip);
-        }
-
-        [Test]
-        public void Play_WithCallbackButNoCallbackRunner_LogsError()
-        {
-            var audioClip = AudioClip.Create("TestClip", 44100, 1, 44100, false);
-            SetPrivateField(_clip, "audioClip", audioClip);
-            SetPrivateField(_clip, "randomizeVolume", false);
-            SetPrivateField(_clip, "randomizePitch", false);
-            SetPrivateField(_clip, "volume", new RangedFloat { MinValue = 1f, MaxValue = 1f });
-            SetPrivateField(_clip, "pitch", new RangedFloat { MinValue = 1f, MaxValue = 1f });
-
-            LogAssert.Expect(LogType.Error, new System.Text.RegularExpressions.Regex("CallbackRunner is null"));
-
-            _clip.Play(_audioSource, () => { });
 
             AudioClip.DestroyImmediate(audioClip);
         }

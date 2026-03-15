@@ -26,7 +26,7 @@ namespace RaccoonNinjaToolbox.Tests.EditMode
 
             for (var i = 0; i < 10; i++)
             {
-                Assert.That(ranged.Random(), Is.EqualTo(5f));
+                Assert.That(ranged.Random(), Is.EqualTo(5f).Within(0.0001f));
             }
         }
 
@@ -47,7 +47,7 @@ namespace RaccoonNinjaToolbox.Tests.EditMode
         {
             var ranged = new RangedFloat { MinValue = 0f, MaxValue = 0f };
 
-            Assert.That(ranged.Random(), Is.EqualTo(0f));
+            Assert.That(ranged.Random(), Is.EqualTo(0f).Within(0.0001f));
         }
 
         [Test]

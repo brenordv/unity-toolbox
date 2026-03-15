@@ -41,6 +41,7 @@ namespace RaccoonNinjaToolbox.Scripts.Editor
         {
             EnsureReflectionCache();
             _stopClipsMethod?.Invoke(null, null);
+            if (_previewSource) _previewSource.Stop();
         }
 
         internal static void Cleanup()
