@@ -4,6 +4,7 @@ using RaccoonNinjaToolbox.Scripts.Constants;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
 using RaccoonNinjaToolbox.Scripts.GlobalControllers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
 {
@@ -13,7 +14,7 @@ namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
         [SerializeField] private AudioClip audioClip;
         public AudioClip AudioClip => audioClip;
 
-        [field: SerializeField, Min(0f),
+        [field: SerializeField, FormerlySerializedAs("<practicalDuration>k__BackingField"), Min(0f),
                 Tooltip("Even though the audio can be longer, this property dictates how long until we consider it done. " +
                         "Example: The sound of a door opening may be 10 seconds because of the reverberation and echo, but " +
                         "the actual opening sound might be only 2 seconds. In this case, that's what we put in this " +
@@ -30,6 +31,12 @@ namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
 
         public void Play(AudioSource audioSource, Action onFinishCallback = null)
         {
+            if (!audioSource)
+            {
+                Debug.LogError($"{name} requires an AudioSource, but none was provided.");
+                return;
+            }
+
             if (!audioClip)
             {
                 Debug.LogError($"{name} requires an AudioClip, but none was found.");
