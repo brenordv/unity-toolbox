@@ -84,6 +84,7 @@ namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
             try
             {
                 await Awaitable.WaitForSecondsAsync(PracticalDuration, ct);
+                ct.ThrowIfCancellationRequested();
                 onFinishCallback();
             }
             catch (OperationCanceledException)

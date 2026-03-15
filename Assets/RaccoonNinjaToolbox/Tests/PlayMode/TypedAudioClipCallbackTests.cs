@@ -2,7 +2,6 @@ using System.Collections;
 using System.Reflection;
 using System.Threading;
 using NUnit.Framework;
-using RaccoonNinjaToolbox.Scripts.DataTypes;
 using RaccoonNinjaToolbox.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.TestTools;
