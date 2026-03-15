@@ -111,3 +111,7 @@ project.lock.json
 sysinfo.txt
 x64/
 x86/
+
+# Dev-only junction to access Samples~ content in the editor
+_DemoDev/
+_DemoDev.meta

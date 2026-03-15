@@ -4,9 +4,16 @@
   "displayName": "Raccoon Ninja's Toolbox",
   "description": "A package that provides helper utilities like ranged float/int, typed audio clip, singleton helper and callback runner.",
   "unity": "6000.0",
-  "documentationUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/readme.md",
-  "changelogUrl": "https://github.com/brenordv/unity-toolbox/activity",
-  "licensesUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/readme.md#license",
+  "documentationUrl": "https://github.com/brenordv/unity-toolbox/blob/master/readme.md",
+  "changelogUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/CHANGELOG.md",
+  "licensesUrl": "https://github.com/brenordv/unity-toolbox/blob/master/readme.md#license",
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "Demo scenes and scripts showcasing all Toolbox features.",
+      "path": "Samples~/Demo"
+    }
+  ],
   "dependencies": {},
   "keywords": [
     "utilities",
