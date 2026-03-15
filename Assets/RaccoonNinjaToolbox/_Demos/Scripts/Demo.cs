@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
 using RaccoonNinjaToolbox.Scripts.Attributes;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
 using RaccoonNinjaToolbox.Scripts.ScriptableObjects;
