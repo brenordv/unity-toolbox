@@ -152,8 +152,9 @@ namespace RaccoonNinjaToolbox.Scripts.GlobalControllers
 
         private void RegisterNewCoroutine(Guid coroutineKey, Coroutine runningCoroutine)
         {
+            var isUpdate = _routines.ContainsKey(coroutineKey);
             _routines[coroutineKey] = runningCoroutine;
-            if (!enableRoutineKeyRuntimeInfo) return;
+            if (!enableRoutineKeyRuntimeInfo || isUpdate) return;
             runningCoroutineKeys.Add(coroutineKey.ToString());
         }
         

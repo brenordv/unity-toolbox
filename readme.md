@@ -1,5 +1,5 @@
 # Raccoon Ninja's Toolbox
-Every time I started a project, I re-implemented the same helpers. So I decided to create this package to same me some
+Every time I started a project, I re-implemented the same helpers. So I decided to create this package to save me some
 time, make it easy to update it and last but not least, to share it with the community and maybe help someone else.
 
 It's all free under MIT License.
@@ -13,7 +13,7 @@ Unity 6 (6000.0) or later. The package has no additional dependencies.
 ## Singleton
 Let's say you want to implement a singleton class called `GameScoreManager`. In this case, you need to:
 1. Create a script named `GameScoreManager.cs`;
-2. Instead of inheriting from MonoBehavior, you need to inherit from `BaseSingletonController<GameScoreManager>`;
+2. Instead of inheriting from MonoBehaviour, you need to inherit from `BaseSingletonController<GameScoreManager>`;
 
 That's it. Now you can access your singleton class from anywhere in your code by calling `GameScoreManager.Instance`.
 
@@ -28,28 +28,28 @@ then you use `RangedInt` and `RangedFloat`. They are exactly the same, differing
 to use `RangedInt` and you can apply the same to `RangedFloat`.
 
 Creating a serialized property of RangedInt with the default min (0)/max (1) values.
-```charp
+```csharp
 [SerializeField] private RangedInt rangedInt;
 ```
 
 Creating a serialized property of RangedInt with the default min (0) and setting max to 15.
-```charp
+```csharp
 [SerializeField, MinMaxIntRange(max: 15)] private RangedInt rangedInt;
 ```
 
 Creating a serialized property of RangedInt with the min -10 and setting max to 10.
-```charp
+```csharp
 [SerializeField, MinMaxIntRange(-10, 15)] private RangedInt rangedInt;
 ```
 
 Considering that the sliders were not changed, to access the min and max values, you can use:
-```charp
+```csharp
 rangedInt.MinValue; // -10
 rangedInt.MaxValue; // 15
 ```
 
 You can also get a random value between the two:
-```charp
+```csharp
 rangedInt.Random(); // -10 <= x <= 15
 ```
 
