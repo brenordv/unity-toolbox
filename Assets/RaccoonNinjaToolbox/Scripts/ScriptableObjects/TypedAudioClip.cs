@@ -60,11 +60,12 @@ namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
             if (onFinishCallback == null)
                 return false;
             
-            var runnerExist = CallbackRunner.Instance;
-            
-            if (runnerExist) return true;
+            // Checking if CallbackRunner exists.
+            if (CallbackRunner.Instance) return true;
+
             Debug.LogError(
                 $"{nameof(CallbackRunner)} is null. Did you forget to add the {nameof(CallbackRunner)} singleton/prefab to the scene?");
+
             return false;
         }
     }
