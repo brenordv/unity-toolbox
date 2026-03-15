@@ -11,6 +11,7 @@ namespace RaccoonNinjaToolbox.Scripts.ScriptableObjects
     public class TypedAudioClip : ScriptableObject
     {
         [SerializeField] private AudioClip audioClip;
+        public AudioClip AudioClip => audioClip;
 
         [field: SerializeField, Min(0f),
                 Tooltip("Even though the audio can be longer, this property dictates how long until we consider it done. " +
