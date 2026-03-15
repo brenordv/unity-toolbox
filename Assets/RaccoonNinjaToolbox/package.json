@@ -7,13 +7,6 @@
   "documentationUrl": "https://github.com/brenordv/unity-toolbox/blob/master/readme.md",
   "changelogUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/CHANGELOG.md",
   "licensesUrl": "https://github.com/brenordv/unity-toolbox/blob/master/readme.md#license",
-  "samples": [
-    {
-      "displayName": "Demo",
-      "description": "Demo scenes and scripts showcasing all Toolbox features.",
-      "path": "Samples~/Demo"
-    }
-  ],
   "dependencies": {},
   "keywords": [
     "utilities",

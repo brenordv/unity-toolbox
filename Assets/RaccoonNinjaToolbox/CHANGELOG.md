@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Unit tests for all core components (Edit Mode and Play Mode).
-- Demo content available as a Package Manager sample.
 
 ### Changed
 - Minimum Unity version raised to Unity 6 (6000.0).

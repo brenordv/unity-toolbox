@@ -20,7 +20,7 @@ That's it. Now you can access your singleton class from anywhere in your code by
 Note that the Awake routine is used to setup the Singleton, but if you need to do something there, you can override
 the `PostAwake` method.
 
-> See the `SingletonGameObject.cs` file in the Demo sample for an example.
+> In the `_Demos/Scripts` folder there's an example in the file `SingletonGameObject.cs`
 
 ## Int/Float min and max with slider
 If you need to define a min and max value and then get a random value between them, or just use the min and max values,
@@ -55,7 +55,7 @@ rangedInt.Random(); // -10 <= x <= 15
 
 > Note: The Max is always inclusive, even for int.
 
-> See the `Demo.cs` file in the Demo sample for examples.
+> In the `_Demos/Scripts` folder there's a bunch of examples in the file `Demo.cs`
 
 ### Is it possible to create a slider for another type?
 Yes, but I personally didn't see a use-case for this, especially if we are considering the min and max values types like
@@ -83,7 +83,7 @@ When using the Play method of this scriptable object, you can pass a callback th
 is done. This is optional, but if you need it, you also must add an instance of the CallbackRunner component. There is
 a prefab for it. (More info about it below.)
 
-> See the `ScriptableObjectAssets` folder in the Demo sample for a clip example.
+> In the `_Demos/ScriptableObjectAssets` folder there's a clip example.
 
 The audio file was downloaded from [freesound.org](https://freesound.org/people/Alivvie/sounds/323437/).
 
@@ -101,7 +101,7 @@ You place it in your scene and you'll be able to:
 
 With this, all coroutines are identified by an ID (Guid), so you can keep track of it, if you need to.
 
-> See the `CallbackRunnerDemo.cs` file in the Demo sample for an example.
+> In the `_Demos/Scripts` folder there's an example in the file `CallbackRunnerDemo.cs`
 
 ## Readonly inspector field
 This is a custom attribute that you can use to make a field in the inspector read-only. This is useful when you want to
@@ -110,7 +110,7 @@ show a value, but don't want to allow the user to change it.
 It's not perfect, if you use it on a list, the list items will be readonly, but you'll still be able to add or remove
 items from it. I haven't found a way to make the list controls read-only.
 
-> See the `Demo.cs` file in the Demo sample for examples.
+> In the `_Demos/Scripts` folder there's a bunch of examples in the file `Demo.cs`
 
 
 # Warranties and Support
@@ -120,22 +120,6 @@ requests, feel free to open an issue or a pull request. I'll try to help as much
 If you like this and made some features better, I encourage you to open a pull request. I'll be happy to review it and
 merge into this package. (This will probably never happen, but if does, I'll create a contributors section here, add
 you and create a link to your project.)
-
-
-# Demos
-Demo content is available as a Package Manager sample. To import it, go to
-**Package Manager > Raccoon Ninja's Toolbox > Samples > Import**.
-
-## Development note
-The demo content lives in `Samples~/Demo/`, which Unity hides from the asset pipeline (due to the `~` suffix).
-During package development, a directory junction is used to make the content visible in the editor:
-```
-mklink /J _DemoDev Samples~\Demo
-```
-This junction is gitignored and only needed for local development. The standard approach for package
-development would be to reference the package from a separate test project via a `file:` path in
-`manifest.json`, which makes the Package Manager sample import work directly. The junction is a pragmatic
-shortcut that avoids maintaining a separate project for a small utility package.
 
 
 # License

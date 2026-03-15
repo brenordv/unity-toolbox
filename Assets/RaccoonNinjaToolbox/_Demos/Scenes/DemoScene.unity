@@ -2987,7 +2987,7 @@ MonoBehaviour:
   rangedIntWithMin5Max15:
     MinValue: 6
     MaxValue: 8
-  audioClip: {fileID: 11400000, guid: 40de8e4dddfdf314e9f2620aeafd79dc, type: 2}
+  typedAudioClip: {fileID: 11400000, guid: 40de8e4dddfdf314e9f2620aeafd79dc, type: 2}
 --- !u!4 &2027559980
 Transform:
   m_ObjectHideFlags: 0
