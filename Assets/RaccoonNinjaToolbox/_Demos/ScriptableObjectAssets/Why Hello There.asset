@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Why Hello There
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 39f9cbdbb8c183e4ebf95c4cda8aa80c, type: 3}
-  <practicalDuration>k__BackingField: 1.2277551
+  <PracticalDuration>k__BackingField: 1.2277551
   volume:
-    MinValue: 0.86
-    MaxValue: 1
+    MinValue: 0.8
+    MaxValue: 0.94
   pitch:
     MinValue: 0.58
     MaxValue: 1.34

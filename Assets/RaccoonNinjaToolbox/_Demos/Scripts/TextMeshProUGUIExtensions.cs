@@ -4,7 +4,7 @@ namespace RaccoonNinjaToolbox._Demo.Scripts
 {
     /// <summary>
     /// Created this because in some situations, the Canvas object was not fully loaded, which led to a
-    /// NullReferenceException on the TextMeshPRoUGUI objects.
+    /// NullReferenceException on the TextMeshProUGUI objects.
     ///
     /// This is not meant to be part of the actual toolbox, but rather a helper for the demo.
     /// </summary>

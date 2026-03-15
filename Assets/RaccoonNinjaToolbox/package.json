@@ -1,15 +1,13 @@
 ﻿{
   "name": "com.ninja.raccoon.toolbox",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "displayName": "Raccoon Ninja's Toolbox",
   "description": "A package that provides helper utilities like ranged float/int, typed audio clip, singleton helper and callback runner.",
-  "unity": "2019.1",
-  "documentationUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/readme.md",
-  "changelogUrl": "https://github.com/brenordv/unity-toolbox/activity",
-  "licensesUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/readme.md#license",
-  "dependencies": {
-    "com.unity.textmeshpro": "3.0.6"
-  },
+  "unity": "6000.0",
+  "documentationUrl": "https://github.com/brenordv/unity-toolbox/blob/master/readme.md",
+  "changelogUrl": "https://github.com/brenordv/unity-toolbox/blob/master/Assets/RaccoonNinjaToolbox/CHANGELOG.md",
+  "licensesUrl": "https://github.com/brenordv/unity-toolbox/blob/master/readme.md#license",
+  "dependencies": {},
   "keywords": [
     "utilities",
     "utils",

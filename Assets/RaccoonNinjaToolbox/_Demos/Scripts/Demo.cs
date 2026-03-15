@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RaccoonNinjaToolbox.Scripts.Attributes;
 using RaccoonNinjaToolbox.Scripts.DataTypes;
+using RaccoonNinjaToolbox.Scripts.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ namespace RaccoonNinjaToolbox._Demo.Scripts
         [SerializeField] private RangedInt rangedIntWithDefaultValues;
         [SerializeField, MinMaxIntRange(max: 10)] private RangedInt rangedIntWithDefaultMinMax10;
         [SerializeField, MinMaxIntRange(5, 15)] private RangedInt rangedIntWithMin5Max15;
+        [SerializeField] private TypedAudioClip typedAudioClip;
         
         private void Start()
         {

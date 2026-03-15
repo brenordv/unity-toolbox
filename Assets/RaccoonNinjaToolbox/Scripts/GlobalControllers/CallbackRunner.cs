@@ -135,7 +135,7 @@ namespace RaccoonNinjaToolbox.Scripts.GlobalControllers
 
             Log($"Coroutine '{coroutineKey}' started");
             
-            onCoroutineStarted.Invoke(coroutineKey);
+            onCoroutineStarted?.Invoke(coroutineKey);
 
             var coroutine = StartCoroutine(action());
 
@@ -152,8 +152,9 @@ namespace RaccoonNinjaToolbox.Scripts.GlobalControllers
 
         private void RegisterNewCoroutine(Guid coroutineKey, Coroutine runningCoroutine)
         {
-            _routines.Add(coroutineKey, runningCoroutine);
-            if (!enableRoutineKeyRuntimeInfo) return;
+            var isUpdate = _routines.ContainsKey(coroutineKey);
+            _routines[coroutineKey] = runningCoroutine;
+            if (!enableRoutineKeyRuntimeInfo || isUpdate) return;
             runningCoroutineKeys.Add(coroutineKey.ToString());
         }
         

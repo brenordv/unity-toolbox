@@ -1,0 +1,19 @@
+{
+    "name": "RaccoonNinjaToolbox.Editor",
+    "rootNamespace": "RaccoonNinjaToolbox",
+    "references": [
+        "RaccoonNinjaToolbox.Runtime",
+        "RaccoonNinjaToolbox.Abstractions.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
