@@ -13,7 +13,6 @@
     "audio",
     "singleton",
     "coroutine",
-    "singleton",
     "scriptableobject",
     "rangedvalues",
     "inspector",
