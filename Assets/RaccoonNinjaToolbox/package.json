@@ -1,6 +1,6 @@
 ﻿{
   "name": "com.ninja.raccoon.toolbox",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "displayName": "Raccoon Ninja's Toolbox",
   "description": "A package that provides helper utilities like ranged float/int, typed audio clip, singleton helper and callback runner.",
   "unity": "6000.0",
@@ -10,13 +10,14 @@
   "dependencies": {},
   "keywords": [
     "utilities",
-    "utils",
-    "coroutine",
-    "scriptableobject",
+    "audio",
     "singleton",
+    "coroutine",
+    "singleton",
+    "scriptableobject",
     "rangedvalues",
-    "rangedint",
-    "rangedfloat"
+    "inspector",
+    "awaitable"
   ],
   "author": {
     "name": "Breno RdV",

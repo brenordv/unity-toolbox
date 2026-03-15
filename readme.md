@@ -80,10 +80,10 @@ audio source, you can also play the audio clip on it using the inspector button 
 is going to sound like.
 
 When using the Play method of this scriptable object, you can pass a callback that will be called after the audio
-is done. This is optional, but if you need it, you also must add an instance of the CallbackRunner component. There is
-a prefab for it. (More info about it below.)
+is done (based on the PracticalDuration). This is optional and uses Unity 6's Awaitable internally — no additional
+components or singletons required. You can also pass a CancellationToken for caller-controlled cancellation.
 
-> In the `_Demos/ScriptableObjectAssets` folder there's a clip example.
+> In the `_Demos/ScriptableObjectAssets` folder there's a clip example and in `_Demos/Scripts` there's a `TypedAudioClipDemo.cs` showing the callback in action.
 
 The audio file was downloaded from [freesound.org](https://freesound.org/people/Alivvie/sounds/323437/).
 
